@@ -1,8 +1,25 @@
 # Python Version 3.10
+numpy==1.26.4
 langchain==0.1.12
 langchain-openai==0.0.8
-langchain-community==0.0.27
+langchain-community>=0.0.28,<0.1
 fastapi==0.110.0
 uvicorn==0.27.1
 python-dotenv==1.0.1
 requests==2.31.0
+faiss-cpu==1.7.4
+tiktoken==0.6.0
+pydantic~=2.11.2
+SQLAlchemy==2.0.40
+openai>=1.12.0
+fpdf2==2.7.6
+moviepy==1.0.3
+opencv-python==4.9.0.80
+scikit-learn==1.4.0
+Pillow==10.2.0
+duckduckgo-search==4.4.1
+decorator>=4.0.2,<5.0
+imageio==2.34.0
+imageio-ffmpeg==0.4.9
+proglog==0.1.10
+reportlab==4.1.0

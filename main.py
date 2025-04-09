@@ -1,7 +1,11 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.responses import StreamingResponse
+import os
+from ai_textbook import VideoSummaryPDFGenerator
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from chat import get_response
-from fastapi.middleware.cors import CORSMiddleware
+import tempfile
 
 app = FastAPI()
 
@@ -28,9 +32,34 @@ async def chat(request: ChatRequest):
     response = get_response(request.message)
     return ChatResponse(response=response)
 
-@app.get("/")
-async def root():
-    """
-    서버 상태 확인용 엔드포인트
-    """
-    return {"status": "ok", "message": "Chat API is running"}
+@app.post("/generate-video-summary")
+async def generate_video_summary(video: UploadFile = File(...)):
+    try:
+        # Save uploaded video to temp file
+        with tempfile.NamedTemporaryFile(delete=False, suffix='.mp4') as temp_video:
+            content = await video.read()
+            temp_video.write(content)
+            temp_video_path = temp_video.name
+        
+        # Generate PDF
+        generator = VideoSummaryPDFGenerator()
+        pdf_bytes = generator.generate_pdf(temp_video_path)
+        
+        # Clean up temp file
+        os.unlink(temp_video_path)
+        
+        # Return PDF as streaming response
+        return StreamingResponse(
+            iter([pdf_bytes]),
+            media_type="application/pdf",
+            headers={"Content-Disposition": "attachment; filename=video_summary.pdf"}
+        )
+    except Exception as e:
+        # Clean up temp file in case of error
+        if 'temp_video_path' in locals():
+            os.unlink(temp_video_path)
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy"}

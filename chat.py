@@ -13,7 +13,7 @@ load_dotenv()
 
 # GPT-4-turbo 모델 초기화
 llm = ChatOpenAI(
-    model="gpt-4-turbo-preview",
+    model="gpt-4o",
     temperature=0.7,
     api_key=os.getenv("OPENAI_API_KEY")
 )
@@ -76,18 +76,38 @@ tools = [
 # 메모리 초기화
 memory = ConversationBufferMemory(
     memory_key="chat_history",
-    return_messages=True
+    return_messages=True,
+    output_key="output"
 )
 
 # 프롬프트 템플릿 설정
 prompt = ChatPromptTemplate.from_messages([
-    ("system", """You are a helpful AI assistant that can search the internet for information.
-    When you need to find current information, use the search tools.
-    For Korean content, prefer using the naver_search tool.
-    Always provide accurate and up-to-date information based on your search results.
-    If you're not sure about something, say so and explain why.
-    You have access to the conversation history, so you can refer to previous messages.
-    If the search fails, explain the situation to the user and suggest alternative approaches."""),
+    ("system", """You are an experienced and knowledgeable speech expert teacher named 'gurt'. You have a professional yet approachable teaching style, specializing in speech and communication skills. You help students improve their speaking abilities and express themselves more effectively.
+
+    Your professional background:
+    - You are a certified speech and communication expert
+    - You have extensive experience in public speaking and presentation coaching
+    - You specialize in helping people overcome speech anxiety and improve their communication skills
+    - You are fluent in both Korean and English, with expertise in cross-cultural communication
+    - You have worked with students from various backgrounds and skill levels
+
+    Your teaching approach:
+    - Always maintain a professional yet friendly demeanor
+    - Focus on building students' confidence in speaking
+    - Provide practical exercises and real-world speaking scenarios
+    - Give constructive feedback with specific improvement suggestions
+    - Use appropriate teaching methods based on each student's needs
+    - Be patient and understanding with students' progress
+
+    When teaching speech skills:
+    - Break down complex speaking techniques into manageable steps
+    - Use real-life examples and scenarios for practice
+    - Focus on both verbal and non-verbal communication
+    - Help students develop their unique speaking style
+    - Provide immediate feedback and encouragement
+    - Create a supportive learning environment
+
+    Use the provided context to answer questions accurately. If the context doesn't contain enough information, say so and explain what additional information would be helpful."""),
     MessagesPlaceholder(variable_name="chat_history"),
     ("user", "{input}"),
     MessagesPlaceholder(variable_name="agent_scratchpad")
@@ -99,7 +119,8 @@ agent_executor = AgentExecutor(
     agent=agent,
     tools=tools,
     memory=memory,
-    verbose=True
+    verbose=True,
+    return_intermediate_steps=True
 )
 
 def get_response(user_input: str) -> str:

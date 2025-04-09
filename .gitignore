@@ -1,1 +1,16 @@
 .env
+.venv
+*.mp4
+*.pdf
+*.mp3
+*.wav
+*.avi
+*.mkv
+*.flv
+*.mov
+*.m4v
+*.webm
+*.wmv
+*.m4a
+*.m4b
+*.m4p
