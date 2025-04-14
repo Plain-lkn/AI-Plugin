@@ -1,5 +1,5 @@
 # Python Version 3.10
-numpy==1.26.4
+numpy==1.24.3
 langchain==0.1.12
 langchain-openai==0.0.8
 langchain-community>=0.0.28,<0.1
@@ -7,7 +7,7 @@ fastapi==0.110.0
 uvicorn==0.27.1
 python-dotenv==1.0.1
 requests==2.31.0
-faiss-cpu==1.7.4
+faiss-cpu>=1.7.0,<1.8.0
 tiktoken==0.6.0
 pydantic~=2.11.2
 SQLAlchemy==2.0.40
