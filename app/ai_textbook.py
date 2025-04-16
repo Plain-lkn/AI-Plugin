@@ -28,11 +28,11 @@ class VideoSummaryPDFGenerator:
             raise ValueError("OpenAI API key is required")
         
         # Create pdf directory if it doesn't exist
-        self.pdf_dir = os.path.join(os.path.dirname(__file__), 'pdf')
+        self.pdf_dir = os.path.join(os.path.dirname(__file__), 'assets/pdf')
         os.makedirs(self.pdf_dir, exist_ok=True)
         
         # Register Korean font
-        font_path = os.path.join(os.path.dirname(__file__), 'fonts', 'NotoSansKR-Regular.ttf')
+        font_path = os.path.join(os.path.dirname(__file__), 'assets/fonts', 'NotoSansKR-Regular.ttf')
         try:
             pdfmetrics.registerFont(TTFont('NotoSansKR', font_path))
             print("Korean font registered successfully")
