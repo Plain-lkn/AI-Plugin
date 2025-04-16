@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from api.ai.chat import router as chat_router
-from api.ai.video_summary import router as video_summary_router
+from app.api.ai.chat import router as chat_router
+from app.api.ai.video_summary import router as video_summary_router
 
 router = APIRouter()
 

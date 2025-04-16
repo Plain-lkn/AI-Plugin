@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, DateTime, Vector, text
-from models.connection import Base
+from app.models.connection import Base
 
 class ChatHistory(Base):
     __tablename__ = "chat_history"

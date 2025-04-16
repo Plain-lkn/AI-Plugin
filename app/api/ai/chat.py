@@ -1,6 +1,6 @@
-from fastapi import APIRouter, Depends
-from schemas.chat import ChatRequest, ChatResponse
-from chat import get_response
+from fastapi import APIRouter
+from app.schemas.chat import ChatRequest, ChatResponse
+from app.chat import get_response
 
 router = APIRouter()
 

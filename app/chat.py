@@ -11,14 +11,12 @@ import requests
 # 환경 변수 로드
 load_dotenv()
 
-# GPT-4-turbo 모델 초기화
 llm = ChatOpenAI(
     model="gpt-4o",
     temperature=0.7,
     api_key=os.getenv("OPENAI_API_KEY")
 )
 
-# 검색 도구 초기화
 search = DuckDuckGoSearchRun()
 
 def naver_search(query: str) -> str:
@@ -63,8 +61,6 @@ def naver_search(query: str) -> str:
     except Exception as e:
         return f"네이버 검색 중 오류가 발생했습니다: {str(e)}"
 
-
-# 도구 정의
 tools = [
     Tool(
         name="search",
@@ -73,14 +69,12 @@ tools = [
     )
 ]
 
-# 메모리 초기화
 memory = ConversationBufferMemory(
     memory_key="chat_history",
     return_messages=True,
     output_key="output"
 )
 
-# 프롬프트 템플릿 설정
 prompt = ChatPromptTemplate.from_messages([
     ("system", """You are an experienced and knowledgeable speech expert teacher named 'gurt'. You have a professional yet approachable teaching style, specializing in speech and communication skills. You help students improve their speaking abilities and express themselves more effectively.
 
@@ -113,7 +107,6 @@ prompt = ChatPromptTemplate.from_messages([
     MessagesPlaceholder(variable_name="agent_scratchpad")
 ])
 
-# 에이전트 생성
 agent = create_openai_functions_agent(llm, tools, prompt)
 agent_executor = AgentExecutor(
     agent=agent,

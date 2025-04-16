@@ -2,7 +2,7 @@ from fastapi import APIRouter, UploadFile, File, HTTPException
 from fastapi.responses import StreamingResponse
 import os
 import tempfile
-from ai_textbook import VideoSummaryPDFGenerator
+from app.ai_textbook import VideoSummaryPDFGenerator
 
 router = APIRouter()
 

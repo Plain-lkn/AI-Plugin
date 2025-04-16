@@ -104,4 +104,4 @@ wheels/
 *.svg
 *.png
 
-.postgres_data/
+postgres_data/
