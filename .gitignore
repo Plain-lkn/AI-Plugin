@@ -103,3 +103,5 @@ wheels/
 *.eot
 *.svg
 *.png
+
+.postgres_data/
