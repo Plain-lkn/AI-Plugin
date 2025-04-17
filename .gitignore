@@ -105,3 +105,4 @@ wheels/
 *.png
 
 postgres_data/
+not_use/
