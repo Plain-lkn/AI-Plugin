@@ -1,5 +1,5 @@
 from sqlalchemy import text
-from db import SessionLocal
+from app.models.db import SessionLocal
 from openai_client import client, get_embedding
 
 def get_related_feedbacks(student_id: str, input_text: str, class_name: str, top_k=3) -> str:

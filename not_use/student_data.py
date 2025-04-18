@@ -1,5 +1,5 @@
 from sqlalchemy import text
-from db import SessionLocal
+from app.models.db import SessionLocal
 
 # 예시로 작성. 실제론 파일에서 읽거나 다른 로직을 사용할 수 있음.
 def get_student_submission(student_id: str) -> str:
