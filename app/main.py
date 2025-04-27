@@ -20,5 +20,5 @@ app.include_router(api_router, prefix="/api")
 Base.metadata.create_all(bind=engine)
 
 @app.get("/")
-async def health_check():
-    return {"message": "Welcome to the docker world!!"}
+async def root():
+    return {"message": "AI Feedback System API"}

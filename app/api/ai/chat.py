@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from app.schemas.chat import ChatRequest, ChatResponse
-from app.chat import get_response
+from app.core.chat import get_response
 
 router = APIRouter()
 
