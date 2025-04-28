@@ -26,3 +26,5 @@ reportlab==4.1.0
 python-multipart==0.0.9
 psycopg2-binary==2.9.10
 pgvector==0.4.0
+pypdf==5.4.0
+pymupdf=1.25.5

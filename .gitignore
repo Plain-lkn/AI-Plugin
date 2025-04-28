@@ -106,4 +106,5 @@ wheels/
 
 postgres_data/
 not_use/
-vectorstore_*.pkl
+subject_*/
+feedback_*/
