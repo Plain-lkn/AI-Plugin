@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from app.core.ai_feedback import generate_feedback
-from app.crud.feedback_data import process_pdf, create_subject, get_pass_subject, save_subject, format_docs
+from app.core.feedback import generate_feedback
+from app.crud.feedback import process_pdf, create_subject, get_pass_subject, save_subject, format_docs
 from langchain_openai import OpenAIEmbeddings
 from app.schemas.feedback import Feedback
 
