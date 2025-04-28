@@ -40,6 +40,3 @@ def generate_feedback(pass_context, context, query):
     res = rag_chain.invoke(query)
     # 피드백 결과도 vector store로 저장
     return res
-
-# 실행 예시
-print(generate_feedback("/Users/sepro/Downloads/AI-Plugin/app/assets/pdf/transformer.pdf", "sepro"))
