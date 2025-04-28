@@ -17,4 +17,4 @@ app.include_router(api_router, prefix="/api")
 
 @app.get("/")
 async def root():
-    return {"message": "AI Feedback System API"}
+    return {"message": "AI System API"}

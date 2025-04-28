@@ -8,7 +8,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.platypus import Paragraph
 from reportlab.lib.enums import TA_LEFT
-from moviepy.editor import VideoFileClip
+from moviepy import VideoFileClip
 import cv2
 from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
@@ -28,11 +28,14 @@ class VideoSummaryPDFGenerator:
             raise ValueError("OpenAI API key is required")
         
         # Create pdf directory if it doesn't exist
-        self.pdf_dir = os.path.join(os.path.dirname(__file__), 'assets/pdf')
+        self.pdf_dir = os.path.join(os.path.dirname(__file__), '..', 'assets', 'pdf')
         os.makedirs(self.pdf_dir, exist_ok=True)
-        
+
         # Register Korean font
-        font_path = os.path.join(os.path.dirname(__file__), 'assets/fonts', 'NotoSansKR-Regular.ttf')
+        font_path = os.path.join(os.path.dirname(__file__), '..', 'assets', 'fonts', 'NotoSansKR-Regular.ttf')
+        if not os.path.exists(font_path):
+            raise FileNotFoundError(f"Korean font file not found at: {font_path}")
+            
         try:
             pdfmetrics.registerFont(TTFont('NotoSansKR', font_path))
             print("Korean font registered successfully")

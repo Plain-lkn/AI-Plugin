@@ -1,5 +1,4 @@
 # Python Version 3.10
-numpy==1.24.3
 langchain==0.1.12
 langchain-openai==0.0.8
 langchain-community>=0.0.28,<0.1
@@ -12,7 +11,6 @@ tiktoken==0.6.0
 pydantic~=2.11.2
 SQLAlchemy==2.0.40
 openai>=1.12.0
-fpdf2==2.7.6
 moviepy==1.0.3
 opencv-python==4.9.0.80
 scikit-learn==1.4.0
@@ -24,7 +22,5 @@ imageio-ffmpeg==0.4.9
 proglog==0.1.10
 reportlab==4.1.0
 python-multipart==0.0.9
-psycopg2-binary==2.9.10
-pgvector==0.4.0
 pypdf==5.4.0
-pymupdf=1.25.5
+pymupdf==1.25.5
