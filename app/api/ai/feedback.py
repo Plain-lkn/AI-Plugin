@@ -12,7 +12,7 @@ async def feedback(feedback: Feedback):
     embeddings = OpenAIEmbeddings()
     subject = create_subject(docs, embeddings)
     pass_context = get_pass_subject(feedback.user_id)
-    query = "문서에 대해 설명해줘"
+    query = "문서에 대해서 피드백을 남겨줘"
 
     res = generate_feedback(pass_context, subject.as_retriever() | format_docs, query)
     save_subject(subject, feedback.user_id, embeddings)
