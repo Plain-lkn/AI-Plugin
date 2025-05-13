@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def get_prompt():
+def get_prompt(): # 프롬프트 수정이 매우 필요
     prompt = """
     너는 학생이 제출한 과제를 평가하고 피드백을 제공하는 AI 튜터야.
     학생의 **이전 과제 내용**과 **현재 제출한 과제 내용**을 참고해서 이번 과제에 대해 평가하고,

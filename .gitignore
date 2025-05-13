@@ -96,8 +96,6 @@ wheels/
 *.m4a
 *.m4b
 *.m4p
-*.ttf
-*.otf
 *.woff
 *.woff2
 *.eot

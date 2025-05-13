@@ -7,7 +7,7 @@ from langchain_text_splitters import CharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
 
 def get_vectorstore_path(user_id: str):
-    return f"faiss/subject_{user_id}"
+    return f"{os.path.dirname(__file__)}/faiss/subject_{user_id}"
 
 def create_subject(docs, embeddings):
     vectorstore = FAISS.from_documents(docs, embedding=embeddings)
